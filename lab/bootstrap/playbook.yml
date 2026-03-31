@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ansible/ansible-lint/refs/heads/main/src/ansiblelint/schemas/playbook.json
+
+- name: common packages
+  hosts: server*
+  become: true
+  tasks:
+    # TODO? first demo leave inetutils uninstalled (show error) 
+    # - resolve with inventory pointed at vagrant VMs!
+    - name: Install inetutils
+      pacman:
+        name: inetutils
+        state: present
+        # update_cache: yes
+

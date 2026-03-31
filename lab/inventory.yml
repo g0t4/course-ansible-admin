@@ -1,0 +1,7 @@
+all:
+  children:
+    ungrouped:
+      hosts:
+        server1: {}
+        server2: {}
+        server3: {}

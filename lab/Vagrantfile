@@ -1,0 +1,50 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "wesdemos/arch-arm"
+  config.vm.box_check_update = false
+
+  (1..3).each do |number|
+    name = "server#{number}"
+
+    config.vm.define name do |node|
+      node.vm.network 'public_network', ip: "192.168.6.10#{number}", netmask: "21"
+      node.vm.network 'forwarded_port', id: 'ssh', host: "810#{number}", guest: "22"
+      node.vm.hostname = name
+    end
+  end
+
+  # config.vm.provision "ansible" do |ansible|
+  #   # run just this provisioner:
+  #   #   vagrant provision --provision-with ansible
+  #   #
+  #   # * must install ansible on host (accessible to vagrant command)
+  #   #   * NOTE vagrant provides inventory to ansible commands (i.e. when it executes ansible-playbook)
+  #   #     thus the inventory.yml/inventory.ini are not necessary for `vagrant provision` demos...
+  #   #     but, they inventory lists can be helpful to test a playbook w/o vagrant involved (often faster to run ansible-playbook directly and iterate on that and then leave `vagrant provision` as the "production" pathway)
+  #   # * docs: https://developer.hashicorp.com/vagrant/docs/provisioning/ansible
+  #   # * ansible provisioner src:
+  #   #    options: https://github.com/hashicorp/vagrant/blob/0b7d460a/plugins/provisioners/ansible/config/base.rb#L14-L34
+  #   ansible.playbook = "bootstrap/playbook.yml"
+  #   # ansible.limit = "server2"
+  #   # ansible.raw_arguments = [ "--check", "--diff" ]
+  #   # ansible.raw_arguments = [ "-vvv" ]
+  #   # for packages, --diff will show name+version per pkg (+added/-removed)
+  #   # ansible.extra_vars = { packages: ["inetutils"] }
+  # end
+
+  config.vm.provider 'parallels' do |vb|
+    # nest inside loops above for targeting specific nodes
+    vb.memory = '8192'
+    vb.cpus = 4
+  end
+ 
+  # PRN if disk space runs out => see course-rancher Vagranfile for script to expand
+  #   OR, modify packer build where it sets 20G disk...
+  #   REMOVE THIS IF no issues in lab setup preparation
+
+  config.vm.provision 'shell', path: "./bootstrap/dotfiles.fish", privileged: false
+
+end
+
