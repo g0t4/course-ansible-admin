@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   config.vm.box_check_update = false
 
   (1..3).each do |number|
-    name = "server#{number}"
+    name = "arch#{number}"
 
     config.vm.define name do |node|
       node.vm.network 'public_network', ip: "192.168.6.10#{number}", netmask: "21"
@@ -38,7 +38,7 @@ Vagrant.configure("2") do |config|
   #   # * ansible provisioner src:
   #   #    options: https://github.com/hashicorp/vagrant/blob/0b7d460a/plugins/provisioners/ansible/config/base.rb#L14-L34
   #   ansible.playbook = "bootstrap/playbook.yml"
-  #   # ansible.limit = "server2"
+  #   # ansible.limit = "arch2"
   #   # ansible.raw_arguments = [ "--check", "--diff" ]
   #   # ansible.raw_arguments = [ "-vvv" ]
   #   # for packages, --diff will show name+version per pkg (+added/-removed)
