@@ -15,14 +15,16 @@ Vagrant.configure("2") do |config|
     end
   end
 
-  config.vm.define "ubuntu1" do |ubuntu|
-    ubuntu.vm.box = "wesdemos/ubuntu2604-arm"
-    ubuntu.vm.provision "shell", inline: <<-SHELL
-      sudo apt update # broken links
-      sudo apt install node-typescript npm nodejs zsh ripgrep
-    SHELL
+  (1..3).each do |number|
+    name = "ubuntu#{number}"
+    config.vm.define name do |ubuntu|
+      ubuntu.vm.box = "wesdemos/ubuntu2604-arm"
+      ubuntu.vm.provision "shell", inline: <<-SHELL
+        sudo apt update # broken links
+        sudo apt install node-typescript npm nodejs zsh ripgrep
+      SHELL
+    end
   end
-
 
   # config.vm.provision "ansible" do |ansible|
   #   # run just this provisioner:
@@ -56,4 +58,3 @@ Vagrant.configure("2") do |config|
   config.vm.provision 'shell', path: "./bootstrap/dotfiles.fish", privileged: false
 
 end
-
