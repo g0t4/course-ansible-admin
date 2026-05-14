@@ -6,9 +6,20 @@
   tasks:
     # TODO? first demo leave inetutils uninstalled (show error) 
     # - resolve with inventory pointed at vagrant VMs!
-    - name: Install inetutils
+    - name: tools
       pacman:
-        name: inetutils
+        name: 
+        - inetutils
+        - lsd
+        - python 
+        # for testing mcp-server-commands:
+        # - nodejs-lts-iron
+        # - npm
+        # - extra/typescript
+        # - zsh
         state: present
-        # update_cache: yes
+        update_cache: yes # update when can't resolve files anymore
+        # git clone https://github.com/g0t4/mcp-server-commands
+        # cd ~/mcp-server-commands 
+        # npm install
 
