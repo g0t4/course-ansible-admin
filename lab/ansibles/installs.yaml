@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ansible/ansible-lint/refs/heads/main/src/ansiblelint/schemas/playbook.json
+- hosts: ubuntu
+  tasks:
+      - name: common packages
+        apt:
+            name:
+                - ripgrep
+                - git-delta
+
+      # - name: Install Ollama
+      #   become: true
+      #   apt:
+      #       name: ollama
+      #       state: present
+      #
+      #        run `ollama` in ubuntu => tells you what to install
+      #        sudo snap install ollama
+      #        # confirm this is wise
