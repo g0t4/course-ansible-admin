@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
   (1..3).each do |number|
     name = "ubuntu#{number}"
     config.vm.define name do |ubuntu|
-      ubuntu.vm.box = "wesdemos/ubuntu2604-arm"
+      ubuntu.vm.box = "wesdemos/ubuntu2404-arm"
       # ubuntu.vm.provision "shell", inline: <<-SHELL
       #   sudo apt update # broken links
       #   sudo apt install node-typescript npm nodejs zsh ripgrep
