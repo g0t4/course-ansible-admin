@@ -1,7 +1,12 @@
 all:
   children:
-    ungrouped:
+    arch:
       hosts:
-        server1: {}
-        server2: {}
-        server3: {}
+        arch1: {}
+        arch2: {}
+        arch3: {}
+    ubuntu:
+      hosts:
+        ubuntu1: {}
+        ubuntu2: {}
+        ubuntu3: {}
