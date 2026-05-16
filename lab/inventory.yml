@@ -8,7 +8,8 @@ all:
         ubuntu3: {}
     arch:
       hosts:
-        arch1: {}
+        arch1:
+          ansible_user: root
         arch2: {}
         arch3: {}
     ungrouped:
