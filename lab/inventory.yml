@@ -5,10 +5,12 @@ all:
       hosts:
         ubuntu1: {}
         ubuntu2: {}
+        ubuntu3: {}
     arch:
       hosts:
         arch1: {}
         arch2: {}
+        arch3: {}
     ungrouped:
       hosts:
         pi1:
