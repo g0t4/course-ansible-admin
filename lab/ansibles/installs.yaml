@@ -1,12 +1,12 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/ansible/ansible-lint/refs/heads/main/src/ansiblelint/schemas/playbook.json
 - hosts: ubuntu
   tasks:
-      - name: common packages
-        become: true
-        apt:
-            name:
-                - ripgrep
-                - git-delta
+    - name: common packages
+      become: true
+      apt:
+        name:
+          - ripgrep
+          - git-delta
 
       # - name: Install Ollama
       #   become: true
