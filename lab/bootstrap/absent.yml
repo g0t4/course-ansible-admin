@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ansible/ansible-lint/refs/heads/main/src/ansiblelint/schemas/playbook.json
+
+- name: remove packages for install demo
+  hosts: ubuntu
+  become: true
+  tasks:
+    - apt:
+        name:
+        - inetutils
+        - bat
+        - lsd
+        - ripgrep
+        - git-delta
+        - silversearcher-ag
+        state: absent
+
+- name: remove packages for install demo
+  hosts: arch
+  become: true
+  tasks:
+    - pacman:
+        name:
+        - inetutils
+        - bat
+        - lsd
+        - ripgrep
+        - git-delta
+        - the_silver_searcher
+        state: absent
+
