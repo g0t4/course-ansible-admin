@@ -6,3 +6,5 @@ all:
         arch2: {}
         ubuntu1: {}
         ubuntu2: {}
+        pi1:
+        pi4:
