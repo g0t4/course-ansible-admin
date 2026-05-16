@@ -5,7 +5,11 @@
   tasks:
     - apt:
         name:
-        - inetutils
+        # each command individually:
+        - inetutils-telnet
+        - inetutils-ping
+        - inetutils-traceroute
+        #
         - bat
         - lsd
         - ripgrep

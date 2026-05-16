@@ -6,13 +6,18 @@
   tasks:
     - apt:
         name:
-        - inetutils
+        # each command individually:
+        - inetutils-telnet
+        - inetutils-ping
+        - inetutils-traceroute
+        #
         - bat
         - lsd
         - ripgrep
         - git-delta
         - silversearcher-ag
         state: absent
+
 
 - name: remove packages for install demo
   hosts: arch
