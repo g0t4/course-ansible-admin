@@ -2,6 +2,7 @@
 - hosts: ubuntu
   tasks:
       - name: common packages
+        become: true
         apt:
             name:
                 - ripgrep
