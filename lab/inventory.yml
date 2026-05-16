@@ -2,5 +2,7 @@ all:
   children:
     ungrouped:
       hosts:
+        arch1: {}
         arch2: {}
         ubuntu1: {}
+        ubuntu2: {}
