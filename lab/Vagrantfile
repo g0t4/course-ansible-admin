@@ -23,6 +23,11 @@ Vagrant.configure("2") do |config|
             node.vm.network 'forwarded_port', id: 'ssh', host: "811#{number}", guest: "22"
             node.vm.hostname = name
 
+            # disable /vagrant shared folder, broken for just ubuntu2604
+            # I do not needed it currently anyways
+            node.vm.synced_folder ".", "/vagrant", disabled: true
+
+
             # ubuntu.vm.provision "shell", inline: <<-SHELL
             #   sudo apt update
             #   sudo apt install node-typescript npm nodejs zsh ripgrep
