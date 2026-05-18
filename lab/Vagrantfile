@@ -37,8 +37,8 @@ Vagrant.configure("2") do |config|
     config.vm.provision 'shell', path: './bootstrap/dotfiles.fish', privileged: false
 
     # * vagrant + ansible integration
-    # config.vm.provision 'absent', type: 'ansible' do |ansible|
-    #    ansible.playbook = './bootstrap/absent.yml'
+    config.vm.provision 'absent', type: 'ansible' do |ansible|
+       ansible.playbook = './bootstrap/absent.yml'
     #
     #   # vagrant provision --provision-with ansible|absent # provisioner type (ansible) OR provision's instance name (absent)
     #   #
@@ -55,7 +55,7 @@ Vagrant.configure("2") do |config|
     #   # ansible.raw_arguments = [ "-vvv" ]
     #   # for packages, --diff will show name+version per pkg (+added/-removed)
     #   # ansible.extra_vars = { packages: ["inetutils"] }
-    # end
+    end
 
     config.vm.provider 'parallels' do |vb|
         # nest inside loops above for targeting specific nodes
