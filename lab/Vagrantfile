@@ -17,8 +17,12 @@ Vagrant.configure("2") do |config|
 
     (1..3).each do |number|
         name = "ubuntu#{number}"
-        config.vm.define name do |ubuntu|
-            ubuntu.vm.box = "wesdemos/ubuntu2604-arm"
+        config.vm.define name do |node|
+            node.vm.box = "wesdemos/ubuntu2604-arm"
+            node.vm.network 'public_network', ip: "192.168.6.11#{number}", netmask: "21"
+            node.vm.network 'forwarded_port', id: 'ssh', host: "811#{number}", guest: "22"
+            node.vm.hostname = name
+
             # ubuntu.vm.provision "shell", inline: <<-SHELL
             #   sudo apt update # broken links
             #   sudo apt install node-typescript npm nodejs zsh ripgrep
