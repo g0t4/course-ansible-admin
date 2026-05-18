@@ -56,9 +56,11 @@ Vagrant.configure("2") do |config|
   #   REMOVE THIS IF no issues in lab setup preparation
 
   config.vm.provision 'shell', path: './bootstrap/dotfiles.fish', privileged: false
-  config.vm.provision 'absent', type: 'ansible' do |ansible|
-     ansible.playbook = './bootstrap/absent.yml'
-     ansible.inventory_path = './inventory.yml'
-  end
+
+  # * vagrant + ansible integration
+  # config.vm.provision 'absent', type: 'ansible' do |ansible|
+  #    ansible.playbook = './bootstrap/absent.yml'
+  #    ansible.inventory_path = './inventory.yml'
+  # end
 
 end
