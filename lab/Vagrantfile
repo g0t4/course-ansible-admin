@@ -30,6 +30,23 @@ Vagrant.configure("2") do |config|
         end
     end
 
+    config.vm.provider 'parallels' do |vb|
+        # nest inside loops above for targeting specific nodes
+        vb.memory = '8192'
+        vb.cpus = 4
+    end
+
+    # PRN if disk space runs out => see course-rancher Vagranfile for script to expand
+    #   OR, modify packer build where it sets 20G disk...
+    #   REMOVE THIS IF no issues in lab setup preparation
+
+    config.vm.provision 'shell', path: './bootstrap/dotfiles.fish', privileged: false
+
+    # * vagrant + ansible integration
+    # config.vm.provision 'absent', type: 'ansible' do |ansible|
+    #    ansible.playbook = './bootstrap/absent.yml'
+    #    ansible.inventory_path = './inventory.yml'
+    # end
     # config.vm.provision "ansible" do |ansible|
     #   # run just this provisioner:
     #   #   vagrant provision --provision-with ansible
@@ -49,22 +66,5 @@ Vagrant.configure("2") do |config|
     #   # ansible.extra_vars = { packages: ["inetutils"] }
     # end
 
-    config.vm.provider 'parallels' do |vb|
-        # nest inside loops above for targeting specific nodes
-        vb.memory = '8192'
-        vb.cpus = 4
-    end
-
-    # PRN if disk space runs out => see course-rancher Vagranfile for script to expand
-    #   OR, modify packer build where it sets 20G disk...
-    #   REMOVE THIS IF no issues in lab setup preparation
-
-    config.vm.provision 'shell', path: './bootstrap/dotfiles.fish', privileged: false
-
-    # * vagrant + ansible integration
-    # config.vm.provision 'absent', type: 'ansible' do |ansible|
-    #    ansible.playbook = './bootstrap/absent.yml'
-    #    ansible.inventory_path = './inventory.yml'
-    # end
 
 end
