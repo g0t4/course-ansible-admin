@@ -6,16 +6,14 @@
   tasks:
     - apt:
         name:
-        # each command individually:
+        # each command individually (instead of one package, there are many):
         - inetutils-telnet
         - inetutils-ping
         - inetutils-traceroute
         #
         - bat
-        - lsd
         - ripgrep
-        - git-delta
-        - silversearcher-ag
+        - silversearcher-ag # diff name for ag command
         state: absent
 
 
@@ -25,11 +23,9 @@
   tasks:
     - pacman:
         name:
-        - inetutils
+        - inetutils # hostname missing b/c of this
         - bat
-        - lsd
         - ripgrep
-        - git-delta
-        - the_silver_searcher
+        - the_silver_searcher # diff name for ag command
         state: absent
 

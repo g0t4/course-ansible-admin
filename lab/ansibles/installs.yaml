@@ -11,10 +11,12 @@
         - inetutils-traceroute
         #
         - bat
-        - lsd
         - ripgrep
-        - git-delta
         - silversearcher-ag
+        #
+        # already installed:
+        - lsd # can point out that this was already installed
+        - git-delta
 
 - name: remove packages for install demo
   hosts: arch
@@ -24,10 +26,12 @@
         name:
         - inetutils
         - bat
-        - lsd
         - ripgrep
-        - git-delta
         - the_silver_searcher
+        #
+        # already installed:
+        - lsd
+        - git-delta
 
       # TODO ollama demos
       # - name: Install Ollama
