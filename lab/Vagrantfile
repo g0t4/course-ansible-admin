@@ -38,23 +38,23 @@ Vagrant.configure("2") do |config|
 
     # * vagrant + ansible integration
     config.vm.provision 'absent', type: 'ansible' do |ansible|
-       ansible.playbook = './bootstrap/absent.yml'
-    #
-    #   # vagrant provision --provision-with ansible|absent # provisioner type (ansible) OR provision's instance name (absent)
-    #   #
-    #   # * must install ansible on host (accessible to vagrant command)
-    #   #   * NOTE vagrant provides inventory to ansible commands (i.e. when it executes ansible-playbook)
-    #   #     thus the inventory.yml/inventory.ini are not necessary for `vagrant provision` demos...
-    #   #     but, inventory lists can be helpful to test a playbook w/o vagrant involved (often faster to run ansible-playbook directly and iterate on that though, leave `vagrant provision` as the "production" pathway)
-    #   # ansible.inventory_path = './inventory.yml' # OPTIONAL configure inventory
-    #   # * docs: https://developer.hashicorp.com/vagrant/docs/provisioning/ansible
-    #   # * ansible provisioner src:
-    #   #    options: https://github.com/hashicorp/vagrant/blob/0b7d460a/plugins/provisioners/ansible/config/base.rb#L14-L34
-    #   # ansible.limit = "arch2"
-    #   # ansible.raw_arguments = [ "--check", "--diff" ]
-    #   # ansible.raw_arguments = [ "-vvv" ]
-    #   # for packages, --diff will show name+version per pkg (+added/-removed)
-    #   # ansible.extra_vars = { packages: ["inetutils"] }
+        ansible.playbook = './bootstrap/absent.yml'
+        #
+        #   # vagrant provision --provision-with ansible|absent # provisioner type (ansible) OR provision's instance name (absent)
+        #   #
+        #   # * must install ansible on host (accessible to vagrant command)
+        #   #   * NOTE vagrant provides inventory to ansible commands (i.e. when it executes ansible-playbook)
+        #   #     thus the inventory.yml/inventory.ini are not necessary for `vagrant provision` demos...
+        #   #     but, inventory lists can be helpful to test a playbook w/o vagrant involved (often faster to run ansible-playbook directly and iterate on that though, leave `vagrant provision` as the "production" pathway)
+        #   # ansible.inventory_path = './inventory.yml' # OPTIONAL configure inventory
+        #   # * docs: https://developer.hashicorp.com/vagrant/docs/provisioning/ansible
+        #   # * ansible provisioner src:
+        #   #    options: https://github.com/hashicorp/vagrant/blob/0b7d460a/plugins/provisioners/ansible/config/base.rb#L14-L34
+        #   # ansible.limit = "arch2"
+        #   # ansible.raw_arguments = [ "--check", "--diff" ]
+        #   # ansible.raw_arguments = [ "-vvv" ]
+        #   # for packages, --diff will show name+version per pkg (+added/-removed)
+        #   # ansible.extra_vars = { packages: ["inetutils"] }
     end
 
     config.vm.provider 'parallels' do |vb|
