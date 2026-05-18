@@ -13,10 +13,8 @@ all:
           ansible_python_interpreter: /usr/bin/python3
         arch2: {}
         arch3: {}
-    ungrouped:
-      hosts:
-        pi1:
-        pi4:
-
-
+    # ungrouped:
+    #   hosts:
+    #     pi1:
+    #     pi4:
 
