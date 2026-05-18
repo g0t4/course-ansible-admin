@@ -1,0 +1,27 @@
+- name: Install Ollama
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Install Ollama on Arch
+      when: ansible_os_family == "Archlinux"
+      community.general.pacman:
+        name: ollama
+        state: present
+        update_cache: true
+
+    - name: Install Ollama on Ubuntu
+      when: ansible_distribution == "Ubuntu"
+      ansible.builtin.apt:
+        name: ollama
+        state: present
+        update_cache: true
+
+    - name: Enable and start ollama
+      ansible.builtin.systemd:
+        name: ollama
+        enabled: true
+        state: starte
+
+
