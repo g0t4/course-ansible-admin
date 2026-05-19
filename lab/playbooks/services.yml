@@ -13,7 +13,7 @@
         update_cache: true
 
     - name: Install valkey on Ubuntu
-      when: ansible_distribution == "Ubuntu"
+      when: ansible_facts["os_family"] == "Ubuntu"
       tags: install2, ubuntu
       ansible.builtin.apt:
         name: valkey
