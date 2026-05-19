@@ -14,12 +14,14 @@
 
     - name: Install valkey on Ubuntu
       when: ansible_distribution == "Ubuntu"
+      tags: install2, ubuntu
       ansible.builtin.apt:
         name: valkey
         state: present
         update_cache: true
 
     - name: Enable and start valkey
+      tags: running
       ansible.builtin.systemd:
         name: valkey
         enabled: true
