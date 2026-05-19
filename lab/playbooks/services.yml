@@ -16,7 +16,7 @@
       when: ansible_facts["distribution"] == "Ubuntu"
       tags: install2, ubuntu
       ansible.builtin.apt:
-        name: valkey
+        name: valkey-server
         state: present
         update_cache: true
 
