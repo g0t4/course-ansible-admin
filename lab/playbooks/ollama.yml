@@ -1,26 +1,26 @@
-- name: Install Ollama
+- name: Install valkey
   hosts: all
   become: true
   gather_facts: true
 
   tasks:
-    - name: Install Ollama on Arch
+    - name: Install valkey on Arch
       when: ansible_os_family == "Archlinux"
       community.general.pacman:
-        name: ollama
+        name: valkey
         state: present
         update_cache: true
 
-    - name: Install Ollama on Ubuntu
+    - name: Install valkey on Ubuntu
       when: ansible_distribution == "Ubuntu"
       ansible.builtin.apt:
-        name: ollama
+        name: valkey
         state: present
         update_cache: true
 
-    - name: Enable and start ollama
+    - name: Enable and start valkey
       ansible.builtin.systemd:
-        name: ollama
+        name: valkey
         enabled: true
         state: starte
 
