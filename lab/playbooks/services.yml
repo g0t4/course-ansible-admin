@@ -20,6 +20,12 @@
         state: present
         update_cache: true
 
+- name: Ensure valkey is running
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
     - name: Enable and start valkey
       tags: running
       ansible.builtin.systemd:
