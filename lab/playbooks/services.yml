@@ -1,7 +1,6 @@
 - name: Install valkey
   hosts: all
   become: true
-  gather_facts: true
 
   tasks:
     - name: Install valkey on Arch
@@ -24,7 +23,6 @@
   hosts: all
   become: true
   tags: running
-  gather_facts: true
 
   tasks:
     - name: Enable and start valkey
