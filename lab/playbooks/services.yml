@@ -29,6 +29,15 @@
           when: ntp_state.stdout != "yes"
           changed_when: ntp_state.stdout != "yes"
 
+        - name: Wait for clock sync
+          ansible.builtin.command:
+            cmd: timedatectl show --property=NTPSynchronized --value
+          register: sync_state
+          changed_when: false
+          until: sync_state.stdout | trim == "yes"
+          retries: 10
+          delay: 1
+
         - name: Install valkey
           ansible.builtin.apt:
             name: valkey-server
