@@ -27,7 +27,7 @@
   tasks:
     - name: Enable and start valkey
       ansible.builtin.systemd:
-        name: valkey
+        name: valkey-server
         enabled: true
         state: started
 
