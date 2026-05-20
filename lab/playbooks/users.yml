@@ -17,6 +17,11 @@
   hosts: arch1
   tags: dotfiles
   tasks:
+    - name: Remove old clone
+      ansible.builtin.file:
+        state: absent
+        dest: ~/repos/dotfiles
+
     - name: Clone repo
       ansible.builtin.git:
         repo: 'https://github.com/ansible/ansible.git'
