@@ -13,19 +13,37 @@
         name: db_sa
         state: absent
 
-- name: Setup dotfiles
+- name: Setup dotfiles for wes user
   hosts: arch1
+  become: true
   tags: dotfiles
   tasks:
-    - name: Remove old clone
-      ansible.builtin.file:
-        state: absent
-        dest: ~/repos/dotfiles
-
-    - name: Clone repo
+    - name: Clone dotfiles
       ansible.builtin.git:
-        repo: 'https://github.com/ansible/ansible.git'
-        dest: ~/other/path/to/dotfiles
+        repo: 'https://github.com/g0t4/dotfiles.git'
+        dest: /home/wes/repos/github/g0t4/dotfiles
+
+    - name: create fish config directory
+      ansible.builtin.file:
+        state: directory
+        path: /home/wes/.config/fish/
+        owner: wes
+        group: wes
+
+    - name: symlink config.fish
+      ansible.builtin.file:
+        state: link
+        src: /home/wes/repos/github/g0t4/dotfiles/fish/config/config.fish
+        dest: /home/wes/.config/fish/config.fish
+        owner: wes
+        group: wes
+
+
+
+
+
+
+
 
 - name: ssh access
   hosts: arch1
