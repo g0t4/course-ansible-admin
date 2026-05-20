@@ -27,6 +27,15 @@
         repo: 'https://github.com/ansible/ansible.git'
         dest: ~/other/path/to/dotfiles
 
+- name: ssh access
+  hosts: arch1
+  tags: ssh
+  tasks:
+    - name: create ~/.ssh/authorized_keys
+      ansible.builtin.copy:
+        src: arch_ed25519.pub
+        dest: /home/wes/.ssh/authorized_keys
+
 
 
 
