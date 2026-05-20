@@ -36,6 +36,8 @@
       ansible.builtin.copy:
         src: authorized_keys
         dest: /home/wes/.ssh/
+        owner: wes
+        group: wes
 
 
 
