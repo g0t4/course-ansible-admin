@@ -35,7 +35,7 @@
       become: true
       ansible.builtin.copy:
         src: authorized_keys
-        dest: /home/wes/.ssh/authorized_keys
+        dest: /home/wes/.ssh/
 
 
 
