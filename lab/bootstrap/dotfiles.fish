@@ -8,9 +8,12 @@
 # sudo pacman -Syu # update installed pkgs (better yet, use newer build of vagrant box w/ updates applied during packer build)
 #
 # FYI I confirmed these packages are not in my arch-arm vagrant box:
-# sudo pacman -S --noconfirm dnsutils iputils net-tools 
+# sudo pacman -S --noconfirm dnsutils iputils net-tools
 #
 # pipx install icdiff   # global vs per user?
+
+# ensure time is synced for installs
+sudo timedatectl set-ntp true
 
 function setup_user
     set user_name $argv[1]
