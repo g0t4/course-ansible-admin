@@ -20,7 +20,7 @@
     - name: Clone repo
       ansible.builtin.git:
         repo: 'https://github.com/ansible/ansible.git'
-        dest: ~/repos/dotfiles
+        dest: ~/other/path/to/dotfiles
 
 
 
