@@ -7,7 +7,7 @@
         name: wes
         # shell: /usr/bin/fish
         # openssl passwd -6 -noverify # type password and generate hash
-        password: $6$wln4Y7nDCfN5j7Qe$xUPqq8uc/ogde.IPuEtPJ7PffC3KYKrD/WOyEZ9KYmPpzvTQPCzoKLnLDnY7XQgoLXLIOD4ujfAR8pl/tNnOx0
+        # password: $6$wln4Y7nDCfN5j7Qe$xUPqq8uc/ogde.IPuEtPJ7PffC3KYKrD/WOyEZ9KYmPpzvTQPCzoKLnLDnY7XQgoLXLIOD4ujfAR8pl/tNnOx0
 
 
 
