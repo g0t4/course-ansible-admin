@@ -37,6 +37,8 @@
         dest: /home/wes/.config/fish/config.fish
         owner: wes
         group: wes
+        force: true
+
 
 
 
