@@ -33,7 +33,7 @@
   tasks:
     - name: create ~/.ssh/authorized_keys
       ansible.builtin.copy:
-        src: arch_ed25519.pub
+        src: authorized_keys
         dest: /home/wes/.ssh/authorized_keys
 
 
