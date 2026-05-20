@@ -1,0 +1,8 @@
+- name: Ensure users can login
+  hosts: arch1
+  tasks:
+    - name: Ensure wes user
+      ansible.builtin.user:
+        name: wes
+
+
