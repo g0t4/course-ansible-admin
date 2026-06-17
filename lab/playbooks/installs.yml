@@ -1,44 +1,37 @@
-- name: remove packages for install demo
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ansible/ansible-lint/refs/heads/main/src/ansiblelint/schemas/playbook.json
+
+- name: Ubuntu setup
   hosts: ubuntu
   become: true
   tasks:
-    - apt:
+    - name: Install Packages
+      apt:
         name:
-        # each command individually:
-        - inetutils-telnet
-        - inetutils-ping
-        - inetutils-traceroute
-        #
-        - bat
-        - ripgrep
-        - silversearcher-ag
-        #
-        # already installed:
-        - lsd # can point out that this was already installed
-        - git-delta
+          # each command individually:
+          - inetutils-telnet
+          - inetutils-ping
+          - inetutils-traceroute
+          #
+          - bat
+          - ripgrep
+          - silversearcher-ag
+          #
+          # already installed:
+          - lsd # can point out that this was already installed
+          - git-delta
 
-- name: remove packages for install demo
+- name: Arch setup
   hosts: arch
   become: true
   tasks:
-    - pacman:
+    - name: Install Packages
+      pacman:
         name:
-        - inetutils
-        - bat
-        - ripgrep
-        - the_silver_searcher
-        #
-        # already installed:
-        - lsd
-        - git-delta
-
-      # TODO ollama demos
-      # - name: Install Ollama
-      #   become: true
-      #   apt:
-      #       name: ollama
-      #       state: present
-      #
-      #        run `ollama` in ubuntu => tells you what to install
-      #        sudo snap install ollama
-      #        # confirm this is wise
+          - inetutils
+          - bat
+          - ripgrep
+          - the_silver_searcher
+          #
+          # already installed:
+          - lsd
+          - git-delta
