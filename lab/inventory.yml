@@ -1,9 +1,15 @@
 all:
   children:
+    ubuntu:
+      hosts:
+        ubuntu1: {}
+        ubuntu2: {}
+        ubuntu3: {}
+    arch:
+      hosts:
+        arch1: {}
+        arch2: {}
+        arch3: {}
     ungrouped:
       hosts:
-        arch2: {}
-        ubuntu1: {}
-        pi1: {}
-        pi4: {}
 
