@@ -1,0 +1,6 @@
+all:
+  children:
+    ungrouped:
+      hosts:
+        arch2: {}
+        ubuntu1: {}
