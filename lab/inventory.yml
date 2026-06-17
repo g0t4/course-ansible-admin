@@ -4,3 +4,6 @@ all:
       hosts:
         arch2: {}
         ubuntu1: {}
+        pi1: {}
+        pi4: {}
+
