@@ -1,10 +1,10 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/ansible/ansible-lint/refs/heads/main/src/ansiblelint/schemas/playbook.json
 
-- name: Remove packages for install demo
-  hosts: ubuntu
+- name: Remove Ubuntu packages for install demo
+  hosts: ubuntu*
   become: true
   tasks:
-    - name: Remove packages
+    - name: Remove demo packages
       ansible.builtin.apt:
         name:
           # each command individually (instead of one package, there are many):
@@ -18,11 +18,11 @@
         state: absent
 
 
-- name: Remove packages for install demo
-  hosts: arch
+- name: Remove Arch packages for install demo
+  hosts: arch*
   become: true
   tasks:
-    - name: Remove packages
+    - name: Remove demo packages
       community.general.pacman:
         name:
           - inetutils # hostname missing b/c of this
