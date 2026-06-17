@@ -1,31 +1,33 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/ansible/ansible-lint/refs/heads/main/src/ansiblelint/schemas/playbook.json
 
-- name: remove packages for install demo
+- name: Remove packages for install demo
   hosts: ubuntu
   become: true
   tasks:
-    - apt:
+    - name: Remove packages
+      ansible.builtin.apt:
         name:
-        # each command individually (instead of one package, there are many):
-        - inetutils-telnet
-        - inetutils-ping
-        - inetutils-traceroute
-        #
-        - bat
-        - ripgrep
-        - silversearcher-ag # diff name for ag command
+          # each command individually (instead of one package, there are many):
+          - inetutils-telnet
+          - inetutils-ping
+          - inetutils-traceroute
+          #
+          - bat
+          - ripgrep
+          - silversearcher-ag # diff name for ag command
         state: absent
 
 
-- name: remove packages for install demo
+- name: Remove packages for install demo
   hosts: arch
   become: true
   tasks:
-    - pacman:
+    - name: Remove packages
+      community.general.pacman:
         name:
-        - inetutils # hostname missing b/c of this
-        - bat
-        - ripgrep
-        - the_silver_searcher # diff name for ag command
+          - inetutils # hostname missing b/c of this
+          - bat
+          - ripgrep
+          - the_silver_searcher # diff name for ag command
         state: absent
 
