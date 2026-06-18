@@ -7,7 +7,7 @@
     - name: Remove demo packages
       ansible.builtin.apt:
         name:
-          # each command individually (instead of one package, there are many):
+          # each command individually:
           - inetutils-telnet
           - inetutils-ping
           - inetutils-traceroute
