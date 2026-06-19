@@ -16,9 +16,15 @@
   hosts: arch1
   tags: dotfiles
   tasks:
+    - name: Remove old clone location
+      ansible.builtin.file:
+        path: /home/vagrant/repos/dotfiles
+        state: absent
     - name: Clone repo
       ansible.builtin.git:
         repo: https://github.com/g0t4/dotfiles
-        dest: ~/repos/dotfiles
+        dest: /home/wes/repos/dotfiles
         version: master
         update: true
+      become: true
+      become_user: wes
