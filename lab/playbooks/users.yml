@@ -5,3 +5,4 @@
     - name: Ensure wes user
       ansible.builtin.user:
         name: wes
+        shell: /usr/bin/fish
