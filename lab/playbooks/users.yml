@@ -32,3 +32,24 @@
         dest: ~/.config/fish/config.fish
         state: link
         force: true
+
+
+- name: ssh access
+  hosts: arch1
+  tags: ssh
+  become: true
+  tasks:
+    - name: Create user's ssh directory
+      ansible.builtin.file:
+        state: directory
+        dest: /home/wes/.ssh
+        owner: wes
+        group: wes
+        mode: "0700"
+    - name: Create ~/.ssh/authorized_keys
+      ansible.builtin.copy:
+        src: authorized_keys
+        dest: /home/wes/.ssh/
+        owner: wes
+        group: wes
+        mode: "0600"
