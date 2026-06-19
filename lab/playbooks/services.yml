@@ -6,7 +6,7 @@
 
   tasks:
     - name: Install valkey on Arch
-      when: ansible_os_family == "Archlinux"
+      when: ansible_facts["os_family"] == "Archlinux"
       tags: install1,arch
       community.general.pacman:
         name: valkey
