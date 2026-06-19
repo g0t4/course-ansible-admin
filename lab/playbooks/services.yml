@@ -7,6 +7,7 @@
   tasks:
     - name: Install valkey on Arch
       when: ansible_os_family == "Archlinux"
+      tags: install1,arch
       community.general.pacman:
         name: valkey
         state: present
@@ -14,15 +15,21 @@
 
     - name: Install valkey on Ubuntu
       when: ansible_distribution == "Ubuntu"
+      tags: install2,ubuntu
       ansible.builtin.apt:
         name: valkey
         state: present
         update_cache: true
 
+- name: Ensure valkey is running
+  hosts: all
+  become: true
+  tags: running
+  gather_facts: true
+
+  tasks:
     - name: Enable and start valkey
       ansible.builtin.systemd:
         name: valkey
         enabled: true
         state: starte
-
-
