@@ -6,10 +6,8 @@ all:
         ubuntu2: {}
         ubuntu3: {}
     arch:
-      vars:
-        ansible_user: root
       hosts:
-        arch1:
+        arch1: {}
         arch2: {}
         arch3: {}
     ungrouped:
