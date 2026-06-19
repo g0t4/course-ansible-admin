@@ -25,6 +25,9 @@
         version: master
         update: true
     - ansible.builtin.file:
+        path: ~/.config/fish
+        state: directory
+    - ansible.builtin.file:
         src: ~/repos/github/g0t4/dotfiles/fish/config/config.fish
         dest: ~/.config/fish/config.fish
         state: link
