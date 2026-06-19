@@ -26,10 +26,13 @@
   become: true
   tags: running
   gather_facts: true
-
+  vars:
+    service_name:
+      Archlinux: valkey
+      Ubuntu: valkey-server
   tasks:
     - name: Enable and start valkey
       ansible.builtin.systemd:
-        name: valkey
+        name: '{{ service_name[ansible_facts["distribution"]] }}'
         enabled: true
         state: started
