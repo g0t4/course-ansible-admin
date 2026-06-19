@@ -32,4 +32,4 @@
       ansible.builtin.systemd:
         name: valkey
         enabled: true
-        state: starte
+        state: started
