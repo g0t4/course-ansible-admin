@@ -12,3 +12,13 @@
         name: db_sa
         state: absent
 
+- name: Setup dotfiles
+  hosts: arch1
+  tags: dotfiles
+  tasks:
+    - name: Clone repo
+      ansible.builtin.git:
+        repo: https://github.com/g0t4/dotfiles
+        dest: ~/repos/dotfiles
+        version: master
+        update: true
