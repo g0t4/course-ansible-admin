@@ -15,16 +15,17 @@
 - name: Setup dotfiles
   hosts: arch1
   tags: dotfiles
+  become: true
+  become_user: wes
   tasks:
-    - name: Remove old clone location
-      ansible.builtin.file:
-        path: /home/vagrant/repos/dotfiles
-        state: absent
     - name: Clone repo
       ansible.builtin.git:
         repo: https://github.com/g0t4/dotfiles
-        dest: /home/wes/repos/dotfiles
+        dest: ~/repos/github/g0t4/dotfiles
         version: master
         update: true
-      become: true
-      become_user: wes
+    - ansible.builtin.file:
+        src: ~/repos/github/g0t4/dotfiles/fish/config/config.fish
+        dest: ~/.config/fish/config.fish
+        state: link
+        force: true
