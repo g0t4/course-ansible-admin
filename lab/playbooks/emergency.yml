@@ -1,0 +1,27 @@
+
+- name: Ensure emergency user with sudo privileges
+  become: true
+  hosts: all
+  tasks:
+    - name: Ensure sudoers group
+      ansible.builtin.group:
+        name: sudoers
+        state: present
+    - name: Ensure user
+      ansible.builtin.user:
+        name: emergency
+        groups: sudoers
+    - name: Ensure SSH authorized key
+      ansible.posix.authorized_key:
+        user: emergency
+        state: present
+        key: "{{ lookup('file', 'authorized_keys') }}"
+    # - name: Grant sudo for sudoers group
+    #   ansible.builtin.copy:
+    #     dest: /etc/sudoers.d/sudoers
+    #     content: "%sudoers ALL=(ALL) NOPASSWD:ALL\n"
+    #     owner: root
+    #     group: root
+    #     mode: '0440'
+    #     validate: '/usr/sbin/visudo -cf %s'
+    #
