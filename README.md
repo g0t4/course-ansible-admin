@@ -1,3 +1,8 @@
+## Ansible Admin courses
+
+- Admin course use [lab](./lab) directory
+- Testing and Debugging use [testing_lab](./testing_lab) directory
+
 
 ## ansible `abbr`s/`alias`es
 

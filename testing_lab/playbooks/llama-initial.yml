@@ -1,0 +1,42 @@
+---
+- name: Build llama.cpp
+  hosts: arch1
+
+  vars:
+    repo: https://github.com/ggml-org/llama.cpp.git
+    src: "{{ ansible_env.HOME }}/repos/llama.cpp"
+    build: "{{ src }}/build"
+    cmake_flags:
+      - -DCMAKE_BUILD_TYPE=Release
+
+  tasks:
+    - name: Install dependencies
+      become: true
+      pacman:
+        name:
+          - git
+          - cmake
+          - ninja
+          - gcc
+        state: present
+
+    - name: Clone repository
+      git:
+        repo: "{{ repo }}"
+        dest: "{{ src }}"
+        version: master
+        update: true
+
+    - name: Configure
+      command:
+        argv: "{{ ['cmake', '-B', build, '-G', 'Ninja'] + cmake_flags }}"
+        chdir: "{{ src }}"
+
+    - name: Build
+      comman:
+        argv:
+          - cmake
+          - --build
+          - "{{ build }}"
+          - --parallel
+        chdir: "{{ src }}"
