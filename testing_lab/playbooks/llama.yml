@@ -23,6 +23,7 @@
         update_cache: true
 
     - name: Clone repository
+      tags: clone
       git:
         repo: "{{ repo }}"
         dest: "{{ src }}"
