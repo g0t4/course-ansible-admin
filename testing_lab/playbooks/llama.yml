@@ -12,6 +12,7 @@
   tasks:
     - name: Install dependencies
       become: true
+      tags: deps
       pacman:
         name:
           - git
