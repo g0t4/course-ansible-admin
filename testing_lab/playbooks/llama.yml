@@ -33,7 +33,7 @@
         chdir: "{{ src }}"
 
     - name: Build
-      comman:
+      command:
         argv:
           - cmake
           - --build
