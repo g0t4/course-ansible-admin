@@ -4,7 +4,7 @@
 
   vars:
     repo: https://github.com/ggml-org/llama.cpp.git
-    src: "{{ ansible_env.HOME }}/repos/llama.cpp"
+    src: "{{ ansible_facts['env']['HOME'] }}/repos/llama.cpp"
     build: "{{ src }}/build"
     cmake_flags:
       - -DCMAKE_BUILD_TYPE=Release
@@ -31,11 +31,13 @@
         update: true
 
     - name: Configure
+      tags: config
       command:
         argv: "{{ ['cmake', '-B', build, '-G', 'Ninja'] + cmake_flags }}"
         chdir: "{{ src }}"
 
     - name: Build
+      tags: build
       command:
         argv:
           - cmake
