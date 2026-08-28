@@ -13,7 +13,7 @@
     - name: Install dependencies
       become: true
       tags: deps
-      pacman:
+      community.general.pacman:
         name:
           - git
           - cmake
@@ -24,22 +24,22 @@
 
     - name: Clone repository
       tags: clone
-      git:
+      ansible.builtin.git:
         repo: "{{ repo }}"
         dest: "{{ src }}"
         version: master
         update: true
 
-    - name: Configure
+    - name: Configure # noqa: no-changed-when
       tags: config
-      command:
+      ansible.builtin.command:
         argv: "{{ ['cmake', '-B', build, '-G', 'Ninja'] + cmake_flags }}"
         chdir: "{{ src }}"
         # creates: "{{ build }}/CMakeCache.txt"
 
-    - name: Build
+    - name: Build # noqa: no-changed-when
       tags: build
-      command:
+      ansible.builtin.command:
         argv:
           - cmake
           - --build
