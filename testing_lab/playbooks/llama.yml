@@ -35,7 +35,7 @@
       command:
         argv: "{{ ['cmake', '-B', build, '-G', 'Ninja'] + cmake_flags }}"
         chdir: "{{ src }}"
-        creates: "{{ build }}/CMakeCache.txt"
+        # creates: "{{ build }}/CMakeCache.txt"
 
     - name: Build
       tags: build
@@ -46,4 +46,4 @@
           - "{{ build }}"
           - --parallel
         chdir: "{{ src }}"
-        creates: "{{ build }}/bin/llama-server"
+        # creates: "{{ build }}/bin/llama-server"
