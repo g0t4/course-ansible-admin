@@ -30,6 +30,7 @@
         dest: "{{ src }}"
         version: master
         update: true
+      debugger: always
 
     - name: Configure # noqa: no-changed-when
       tags: config
