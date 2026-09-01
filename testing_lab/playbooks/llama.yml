@@ -4,7 +4,7 @@
 
   vars:
     repo: https://github.com/ggml-org/llama.cpp.git
-    src: "/opt/{{ ansible_facts['env']['HOME'] }}/repos/llama.cpp"
+    src: "{{ ansible_facts['env']['HOME'] }}/repos/llama.cpp"
     build: "{{ src }}/build"
     cmake_flags:
       - -DCMAKE_BUILD_TYPE=Release
