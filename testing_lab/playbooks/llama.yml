@@ -1,6 +1,6 @@
 ---
 - name: Build llama.cpp
-  hosts: arch1
+  hosts: arch*
 
   vars:
     repo: https://github.com/ggml-org/llama.cpp.git
@@ -20,7 +20,7 @@
           - ninja
           - gcc
         state: present
-        update_cache: true
+        # update_cache: true # stale pkg db failure
 
     - name: Clone repository
       tags: clone
