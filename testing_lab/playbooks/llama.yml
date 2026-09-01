@@ -15,7 +15,8 @@
     - name: Debug
       tags: debug
       ansible.builtin.debug:
-        var: ansible_facts
+        # var: ansible_facts
+        var: ansible_facts["user_dir"]
 
     - name: Install dependencies
       become: true
