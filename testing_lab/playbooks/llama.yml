@@ -21,6 +21,7 @@
           - gcc
         state: present
         # update_cache: true # stale pkg db failure
+      debugger: on_failed
 
     - name: Clone repository
       tags: clone
