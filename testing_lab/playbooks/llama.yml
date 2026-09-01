@@ -4,11 +4,12 @@
 
   vars:
     repo: https://github.com/ggml-org/llama.cpp.git
-    src: "{{ ansible_facts['env']['HOME'] }}/repos/llama.cpp"
+    src: "/opt/{{ ansible_facts['env']['HOME'] }}/repos/llama.cpp"
     build: "{{ src }}/build"
     cmake_flags:
       - -DCMAKE_BUILD_TYPE=Release
 
+  debugger: on_failed
   tasks:
     - name: Install dependencies
       become: true
@@ -21,7 +22,7 @@
           - gcc
         state: present
         # update_cache: true # stale pkg db failure
-      debugger: on_failed
+      # debugger: on_failed
 
     - name: Clone repository
       tags: clone
@@ -30,7 +31,7 @@
         dest: "{{ src }}"
         version: master
         update: true
-      debugger: always
+      # debugger: always
 
     - name: Configure # noqa: no-changed-when
       tags: config
