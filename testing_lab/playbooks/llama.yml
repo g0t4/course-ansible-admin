@@ -21,12 +21,6 @@
           - gcc
         state: present
         # update_cache: true # stale pkg db failure
-      ignore_errors: true
-      register: pacman_result
-    - name: Debug
-      tags: deps
-      ansible.builtin.debug:
-        var: pacman_result.stdout_lines
 
     - name: Clone repository
       tags: clone
