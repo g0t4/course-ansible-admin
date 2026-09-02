@@ -89,3 +89,29 @@
               - llama_server_stat.stat.exists
               - llama_server_stat.stat.isreg
             msg: "llama-server binary is missing"
+
+        - name: Ensure llama-server.service unit
+          become: true
+          tags: service
+          ansible.builtin.template:
+            src: # TODO
+            dest: /etc/systemd/system/llama-server.service
+            owner: root
+            group: root
+            mode: "0644"
+          notify: Restart llama-server
+
+        - name: Enable and start llama-server
+          become: true
+          ansible.builtin.systemd_service:
+            name: llama-server
+            enabled: true
+            state: started
+
+  handlers:
+    - name: Restart llama-server
+      become: true
+      ansible.builtin.systemd_service:
+        name: llama-server
+        state: restarted
+        daemon_reload: true

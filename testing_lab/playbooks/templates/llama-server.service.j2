@@ -1,0 +1,13 @@
+[Unit]
+Description=llama-server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory={{ src }}
+ExecStart={{ build }}/bin/llama-server \
+    --fim-qwen-1.5b-default
+
+[Install]
+WantedBy=multi-user.target
+
