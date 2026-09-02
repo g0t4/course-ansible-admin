@@ -9,7 +9,7 @@
     cmake_flags:
       - -DCMAKE_BUILD_TYPE=Release
 
-  debugger: on_failed
+  # debugger: on_failed
   tasks:
 
     - name: Debug
@@ -64,8 +64,13 @@
       block:
         - name: Check for build dir
           ansible.builtin.stat:
-            path: "{{ build }}"
+            path: "{{ build }}/foo"
           register: build_dir_stat
         - name: Debug build_dir_stat
           ansible.builtin.debug:
             var: build_dir_stat
+        - name: Fail if no build dir
+          ansible.builtin.assert:
+            that:
+              - build_dir_stat.stat.exists
+              - build_dir_stat.stat.isdir
