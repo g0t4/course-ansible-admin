@@ -58,3 +58,14 @@
           - --parallel
         chdir: "{{ src }}"
         # creates: "{{ build }}/bin/llama-server"
+
+    - name: Install
+      tags: install
+      block:
+        - name: Check for build dir
+          ansible.builtin.stat:
+            path: "{{ build }}"
+          register: build_dir_stat
+        - name: Debug build_dir_stat
+          ansible.builtin.debug:
+            var: build_dir_stat
