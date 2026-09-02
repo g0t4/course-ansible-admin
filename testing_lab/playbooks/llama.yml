@@ -69,6 +69,7 @@
         - name: Debug build_dir_stat
           ansible.builtin.debug:
             var: build_dir_stat
+          when: ansible_verbosity == 1
         - name: Fail if no build dir
           ansible.builtin.assert:
             that:
@@ -76,11 +77,12 @@
               - build_dir_stat.stat.isdir
         - name: Check for llama-server binary
           ansible.builtin.stat:
-            dest: "{{ build }}/bin/llama-server2"
+            dest: "{{ build }}/bin/llama-server"
           register: llama_server_stat
         - name: Debug llama_server_stat
           ansible.builtin.debug:
             var: llama_server_stat
+          when: ansible_verbosity == 1
         - name: Fail if no llama-server binary
           ansible.builtin.assert:
             that:
