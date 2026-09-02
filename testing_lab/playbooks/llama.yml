@@ -69,7 +69,7 @@
         - name: Debug build_dir_stat
           ansible.builtin.debug:
             var: build_dir_stat
-          when: ansible_verbosity == 1
+          when: not build_dir_stat.stat.exists
         - name: Fail if no build dir
           ansible.builtin.assert:
             that:
@@ -82,7 +82,7 @@
         - name: Debug llama_server_stat
           ansible.builtin.debug:
             var: llama_server_stat
-          when: ansible_verbosity == 1
+          when: not llama_server_stat.stat.exists
         - name: Fail if no llama-server binary
           ansible.builtin.assert:
             that:
