@@ -94,12 +94,20 @@
           become: true
           tags: service
           ansible.builtin.template:
-            src: # TODO
+            src: llama-server.service.j2
             dest: /etc/systemd/system/llama-server.service
             owner: root
             group: root
             mode: "0644"
-          notify: Restart llama-server
+          register: service_definition
+
+        - name: Restart llama-server
+          become: true
+          ansible.builtin.systemd_service:
+            name: llama-server
+            state: restarted
+            daemon_reload: true
+          when: service_definition.changed
 
         - name: Enable and start llama-server
           become: true
@@ -107,11 +115,3 @@
             name: llama-server
             enabled: true
             state: started
-
-  handlers:
-    - name: Restart llama-server
-      become: true
-      ansible.builtin.systemd_service:
-        name: llama-server
-        state: restarted
-        daemon_reload: true
