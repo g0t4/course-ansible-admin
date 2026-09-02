@@ -64,7 +64,7 @@
       block:
         - name: Check for build dir
           ansible.builtin.stat:
-            path: "{{ build }}/foo"
+            path: "{{ build }}"
           register: build_dir_stat
         - name: Debug build_dir_stat
           ansible.builtin.debug:
@@ -74,3 +74,16 @@
             that:
               - build_dir_stat.stat.exists
               - build_dir_stat.stat.isdir
+        - name: Check for llama-server binary
+          ansible.builtin.stat:
+            dest: "{{ build }}/bin/llama-server2"
+          register: llama_server_stat
+        - name: Debug llama_server_stat
+          ansible.builtin.debug:
+            var: llama_server_stat
+        - name: Fail if no llama-server binary
+          ansible.builtin.assert:
+            that:
+              - llama_server_stat.stat.exists
+              - llama_server_stat.stat.isreg
+            msg: "llama-server binary is missing"
