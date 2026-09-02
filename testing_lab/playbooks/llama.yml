@@ -108,7 +108,7 @@
             name: llama-server
             state: restarted
             daemon_reload: true
-          when: service_definition.changed
+          when: service_definition.changed # noqa: no-handler
 
         - name: Enable and start llama-server
           become: true
