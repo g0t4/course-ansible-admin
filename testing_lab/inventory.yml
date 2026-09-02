@@ -15,5 +15,6 @@ all:
         arch1:
         arch2:
         arch3:
+          # ansible_user: wes
     ungrouped:
       hosts:
